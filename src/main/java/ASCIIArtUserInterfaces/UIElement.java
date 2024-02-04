@@ -1,6 +1,5 @@
 package ASCIIArtUserInterfaces;
 
-import java.util.*;
 
 abstract class UIElement {
     protected String text;
