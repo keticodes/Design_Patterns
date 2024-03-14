@@ -3,7 +3,6 @@ package Decorator;
 import java.io.IOException;
 import java.io.FileWriter;
 
-// FilePrinter decorator
 class FilePrinter extends PrinterDecorator {
     public FilePrinter(Printer printer) {
         super(printer);
