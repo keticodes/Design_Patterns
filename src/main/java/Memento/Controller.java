@@ -1,17 +1,18 @@
 package Memento;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack; // Import Stack for using as redo list
 
 public class Controller {
     private Model model;
     private Gui gui;
-    private List<IMemento> history; // Memento history
+    private Stack<IMemento> undoStack; // Undo list
+    private Stack<IMemento> redoStack; // Redo list
 
     public Controller(Gui gui) {
         this.model = new Model();
         this.gui = gui;
-        this.history = new ArrayList<>();
+        this.undoStack = new Stack<>();
+        this.redoStack = new Stack<>();
     }
 
     public void setOption(int optionNumber, int choice) {
@@ -33,16 +34,25 @@ public class Controller {
     }
 
     public void undo() {
-        if (!history.isEmpty()) {
-            System.out.println("Memento found in history");
-            IMemento previousState = history.remove(history.size() - 1);
+        if (!undoStack.isEmpty()) {
+            IMemento previousState = undoStack.pop();
+            redoStack.push(model.createMemento()); // Save current state to redo
             model.restoreState(previousState);
             gui.updateGui();
         }
     }
 
+    public void redo() {
+        if (!redoStack.isEmpty()) {
+            IMemento nextState = redoStack.pop();
+            undoStack.push(model.createMemento()); // Save current state to undo
+            model.restoreState(nextState);
+            gui.updateGui();
+        }
+    }
+
     private void saveToHistory() {
-        IMemento currentState = model.createMemento();
-        history.add(currentState);
+        undoStack.push(model.createMemento());
+        redoStack.clear(); // Clear redo stack when new changes made
     }
 }

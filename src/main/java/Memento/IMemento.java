@@ -1,6 +1,7 @@
 package Memento;
 
 public interface IMemento {
-    // memento metadata methods
+    String getMetadata(); // Method to get metadata about the state
+
 
 }
