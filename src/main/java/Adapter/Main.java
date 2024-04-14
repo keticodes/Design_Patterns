@@ -6,6 +6,7 @@ public class Main {
         date.setDay(4);
         date.setMonth(4);
         date.setYear(2024);
+
         System.out.println("Date: " + date.getDay() + "/" + date.getMonth() + "/" + date.getYear());
 
         date.advanceDays(10);
