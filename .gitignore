@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -11,6 +13,18 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/.gitignore
+.output.txt
+.new_log.txt
+mvn
+mvnw
+mvnw.cmd
+pom.xml
+default_log.txt
+
 
 ### Eclipse ###
 .apt_generated
