@@ -10,7 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ApiFacade {
-    public String getAttributeValueFromJson(String urlString, String attributeName) throws IOException, IllegalArgumentException {
+    public Object getAttributeValueFromJson(String urlString, String attributeName) throws IOException, IllegalArgumentException {
         String jsonResult = getJsonFromApi(urlString);
         return extractAttributeFromJson(jsonResult, attributeName);
     }
@@ -32,12 +32,12 @@ public class ApiFacade {
         }
     }
 
-    private String extractAttributeFromJson(String json, String attributeName) throws IllegalArgumentException {
+    private Object extractAttributeFromJson(String json, String attributeName) throws IllegalArgumentException {
         JSONParser parser = new JSONParser();
         try {
             JSONObject jsonObject = (JSONObject) parser.parse(json);
             if (jsonObject.containsKey(attributeName)) {
-                return (String) jsonObject.get(attributeName);
+                return jsonObject.get(attributeName);
             } else {
                 throw new IllegalArgumentException("Attribute not found in JSON");
             }
