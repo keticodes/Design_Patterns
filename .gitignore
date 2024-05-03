@@ -5,6 +5,7 @@ target/
 pom.xml.tag
 pom.xml.releaseBackup
 .idea
+.idea/sonarlint
 new_log.txt### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -25,6 +26,11 @@ pom.xml
 default_log.txt
 output.txt
 new_log.txt
+.idea
+.idea/
+.idea/*
+.idea/workspace.xml
+
 .
 .
 
